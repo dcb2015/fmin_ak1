@@ -34,7 +34,7 @@
 // To distinguish this version of fmin from other translations,
 // an '_ak1' suffix has been appended to its name.
 //
-// 2 August 2017
+// 3 August 2017
 //
 // Written in Microsoft Visual Studio Express 2013 for Windows Desktop
 //
@@ -75,7 +75,6 @@ double f(double x){	//The function to be minimized
 	int seg_ind;			// Section indicator, to indicate which segment of the piecewise bounds to use.
 	double E_QuarterT, sin_ET4, temp1;
 
-	// KepSolvVar.mAnom = 0.5 * PI;
 	KepSolvVar.mAnom = HALF_PI;
 	KepSolvVar.ae = KepSolvVar.re = DBL_EPSILON;
 
@@ -328,7 +327,7 @@ void Compute_ET4(ZTYPE *zd, double ecc)
 	} // end else (sign(fb) != sign(fc))
 
 	return;
-}											//End Compute_ET4
+}  //End Compute_ET4
 
 double fmin(ZTYPE *zd, double tol){
  // This function determines an approximation to the point where f attains a
@@ -347,7 +346,7 @@ double fmin(ZTYPE *zd, double tol){
 	//c = (3 - sqrt(5)) / 2;
 	c = SQ_GOLDEN_INV;
 
-	eps = sqrt(DBL_EPSILON);		//Machine epsilon for type double
+	eps = sqrt(DBL_EPSILON);	//Machine epsilon for type double
 
 	//Initialization
 	a = zd->b;
@@ -359,7 +358,7 @@ double fmin(ZTYPE *zd, double tol){
 	//Start main loop
 	for (short i = 0; i < FMINIT; ++i) {
 
-		xm = 0.5 * (a + b);
+		xm = a + 0.5 * (b - a);
 		tol1 = eps*fabs(x) + tol / 3;
 		tol2 = tol1 * 2;
 
@@ -433,11 +432,10 @@ double fmin(ZTYPE *zd, double tol){
 	return x;
 }							//End fmin		
 
-int main()
-{
+int main() {
 	char rflag;			//Readiness flag
 
-	cout << "                       fmin_ak1 (2 August 2017)" << endl;
+	cout << "                       fmin_ak1 (3 August 2017)" << endl;
 	cout << "======================================================================" << endl;
 	cout << "\nThis program finds where the following function takes a maximum:" << endl << endl;
 	cout << "f = asech[sin(ET4)] - 0.81732634658 * e" << endl << endl;
