@@ -34,7 +34,7 @@
 // To distinguish this version of fmin from other translations,
 // an '_ak1' suffix has been appended to its name.
 //
-// 3 August 2017
+// 8 April 2019
 //
 // Written in Microsoft Visual Studio Express 2013 for Windows Desktop
 //
@@ -92,41 +92,47 @@ double f(double x){	//The function to be minimized
 
 	switch (seg_ind){
 	case 0: if (x < 0.05){
-				KepSolvVar.b = 1.0 - 0.0249325256* x;
-				KepSolvVar.c = KepSolvVar.b + 0.0006;
+				KepSolvVar.b = 1.0 - 0.02493253* x;
+				KepSolvVar.c = KepSolvVar.b + 0.00031104;
 			}
 			else {
-				KepSolvVar.b = 1.0024532 - 0.07399894* x;
-				KepSolvVar.c = KepSolvVar.b + 0.00060;
+				KepSolvVar.b = 1.00245332 - 0.07399894* x;
+				KepSolvVar.c = KepSolvVar.b + 0.00030113;
 			}
 			break;
-	case 1:	KepSolvVar.b = 1.0092853 - 0.1423205 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.00216;
+	case 1:	KepSolvVar.b = 1.00928544 - 0.14232021 * x;
+			KepSolvVar.c = KepSolvVar.b + 0.00107884;
 			break;
-	case 2:	KepSolvVar.b = 1.0246502 - 0.21914456 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.001670;
+	case 2:	KepSolvVar.b = 1.02465031 - 0.21914455 * x;
+			KepSolvVar.c = KepSolvVar.b + 0.00083516;
 			break;
-	case 3:	KepSolvVar.b = 1.0414315 - 0.2750822 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.00115;
+	case 3:	KepSolvVar.b = 1.0414316 - 0.2750822 * x;
+			KepSolvVar.c = KepSolvVar.b + 0.00056550;
 			break;
-	case 4:	KepSolvVar.b = 1.0555247 - 0.3103152 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.00065;
+	case 4:	KepSolvVar.b = 1.0555248 - 0.31031516 * x;
+			KepSolvVar.c = KepSolvVar.b + 0.00032282;
 			break;
-	case 5:	KepSolvVar.b = 1.064431 - 0.3281283 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.00029;
+	case 5:	KepSolvVar.b = 1.06443134 - 0.32812824 * x;
+			KepSolvVar.c = KepSolvVar.b + 0.00013198;
 			break;
-	case 6:	KepSolvVar.b = 1.067247 - 0.3328443 * x;
-			KepSolvVar.c = KepSolvVar.b + 0.00005;
+	case 6:	if (x < 0.644) {
+				KepSolvVar.b = 1.06731443 - 0.33293341 * x;
+				KepSolvVar.c = KepSolvVar.b + 0.0000055;
+			}
+			else {
+				KepSolvVar.c = 1.06721208 - 0.33277445 * x;
+				KepSolvVar.b = KepSolvVar.c - 0.00001;
+			}
 			break;
-	case 7:	KepSolvVar.c = 1.064235 - 0.3285209 * x;
-			KepSolvVar.b = KepSolvVar.c - 0.0001;
+	case 7:	KepSolvVar.c = 1.06423466 - 0.328521 * x;
+			KepSolvVar.b = KepSolvVar.c - 0.00009713;
 			break;
-	case 8:	KepSolvVar.c = 1.056150 - 0.3184143 * x;
-			KepSolvVar.b = KepSolvVar.c - 0.0002;
+	case 8:	KepSolvVar.c = 1.0561493 - 0.3184143 * x;
+			KepSolvVar.b = KepSolvVar.c - 0.00015229;
 			break;
 	case 9:
-	default:KepSolvVar.c = 1.043999 - 0.3049128 * x;
-			KepSolvVar.b = KepSolvVar.c - 0.0002;
+	default:KepSolvVar.c = 1.04399804 - 0.3049129 * x;
+			KepSolvVar.b = KepSolvVar.c - 0.00018282;
 			break;
 	} // End switch
 
@@ -435,7 +441,7 @@ double fmin(ZTYPE *zd, double tol){
 int main() {
 	char rflag;			//Readiness flag
 
-	cout << "                       fmin_ak1 (3 August 2017)" << endl;
+	cout << "                       fmin_ak1 (8 April 2019)" << endl;
 	cout << "======================================================================" << endl;
 	cout << "\nThis program finds where the following function takes a maximum:" << endl << endl;
 	cout << "f = asech[sin(ET4)] - 0.81732634658 * e" << endl << endl;
